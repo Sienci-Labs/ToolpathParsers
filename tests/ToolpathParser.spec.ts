@@ -1,0 +1,12 @@
+import { expect, assert } from 'chai';
+import { ToolpathParser } from "../src/ToolpathParser";
+
+describe('ToolpathParser Class', async () => {
+    const parser = new ToolpathParser();
+    const carbideFixture = __dirname + '/fixtures/two-drawer-box.c2d';
+    const carbideResult = await parser.parseFile(carbideFixture);
+
+    it('Should return an array of 3 toolpaths for the carbide fixture', async () => {
+        expect(carbideResult).to.be.a('array').of.length(3);
+    });
+});

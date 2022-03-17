@@ -5,6 +5,9 @@ import {CarbideParser} from "./parsers/CarbideParser";
 export class ToolpathParser {
     public async parseFile(path: string): Promise<Toolpath[]> {
         const parser = this.matchParserToExtension(path);
+        if (!parser) {
+            throw new Error('No parser associated with this file extension');
+        }
         return await parser.openAndParse(path);
     }
 
