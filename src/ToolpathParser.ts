@@ -3,13 +3,10 @@ import {AbstractParser} from "./parsers/AbstractParser";
 import {CarbideParser} from "./parsers/CarbideParser";
 
 export class ToolpathParser {
-    private parser: AbstractParser;
-
-    constructor(path: string) {
-        this.parser = this.matchParserToExtension(path);
+    public async parseFile(path: string): Promise<Toolpath[]> {
+        const parser = this.matchParserToExtension(path);
+        return await parser.openAndParse(path);
     }
-
-    public async parseFile(path: string) {}
 
     /**
      * Determines which parser strategy to use for this file if any

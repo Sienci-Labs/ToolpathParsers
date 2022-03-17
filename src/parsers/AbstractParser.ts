@@ -13,8 +13,8 @@ export abstract class AbstractParser {
         if (!path || path === '') {
             throw new Error('Empty path or no path passed to parser.');
         }
-        const blob = await this.open(path);
-        const paths = await this.parse(blob);
+        const data = await this.open(path);
+        const paths = await this.parse(data);
         return paths;
     }
 
