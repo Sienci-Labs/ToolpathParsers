@@ -4,6 +4,8 @@ import { ToolpathParser } from "../src/ToolpathParser";
 describe('ToolpathParser Class', async () => {
     const parser = new ToolpathParser();
     const carbideFixture = __dirname + '/fixtures/two-drawer-box.c2d';
+    const invalidExtensionFixture = '/fixtures/nope.gcc';
+    const nonExistentFixture = '/fixtures/missing.c2d';
     const carbideResult = await parser.parseFile(carbideFixture);
 
     it('Should return an array of 3 toolpaths for the carbide fixture', async () => {
